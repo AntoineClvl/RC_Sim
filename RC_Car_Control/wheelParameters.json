@@ -1,0 +1,150 @@
+{
+    "presets": {
+        "custom": {
+            "mapping": {
+                "L2": "rglSlider[0]",
+                "L3": "rglSlider[0]",
+                "PS": "rglSlider[0]",
+                "R2": "rglSlider[0]",
+                "R3": "rglSlider[0]",
+                "SE": "rglSlider[0]",
+                "ST": "rglSlider[0]",
+                "arrow": "rglSlider[0]",
+                "brake": "lRz",
+                "circle": "rglSlider[0]",
+                "clutch": "rglSlider[0]",
+                "cross": "rglSlider[0]",
+                "gas": "lRz",
+                "shifter_left": "rglSlider[0]",
+                "shifter_right": "rglSlider[0]",
+                "square": "rglSlider[0]",
+                "steering": "rglSlider[0]",
+                "triangle": "rglSlider[0]"
+            }
+        },
+        "thrustmaster": {
+            "limValues": {
+                "lX": {
+                    "off": 0,
+                    "on": 65535
+                }
+            },
+            "mapping": {
+                "L2": "rgbButtons[9]",
+                "L3": "rgbButtons[10]",
+                "PS": "rgbButtons[12]",
+                "R2": "rgbButtons[8]",
+                "R3": "rgbButtons[11]",
+                "SE": "rgbButtons[6]",
+                "ST": "rgbButtons[7]",
+                "arrow": "rgdwPOV[0]",
+                "brake": "lY",
+                "circle": "rgbButtons[4]",
+                "clutch": "rglSlider[0]",
+                "cross": "rgbButtons[5]",
+                "gas": "lRz",
+                "shifter_left": "rgbButtons[0]",
+                "shifter_right": "rgbButtons[1]",
+                "square": "rgbButtons[3]",
+                "steering": "lX",
+                "triangle": "rgbButtons[2]"
+            }
+        },
+        "thrustmaster2": {
+            "limValues": {
+                "lRz": {
+                    "off": 65535,
+                    "on": 0
+                },
+                "lX": {
+                    "off": 0,
+                    "on": 65535
+                },
+                "lY": {
+                    "off": 65535,
+                    "on": 0
+                },
+                "rgbButtons[0]": {
+                    "off": 0,
+                    "on": 128
+                },
+                "rgbButtons[10]": {
+                    "off": 0,
+                    "on": 128
+                },
+                "rgbButtons[11]": {
+                    "off": 0,
+                    "on": 128
+                },
+                "rgbButtons[12]": {
+                    "off": 0,
+                    "on": 0
+                },
+                "rgbButtons[1]": {
+                    "off": 0,
+                    "on": 128
+                },
+                "rgbButtons[2]": {
+                    "off": 0,
+                    "on": 128
+                },
+                "rgbButtons[3]": {
+                    "off": 0,
+                    "on": 128
+                },
+                "rgbButtons[4]": {
+                    "off": 0,
+                    "on": 128
+                },
+                "rgbButtons[5]": {
+                    "off": 0,
+                    "on": 128
+                },
+                "rgbButtons[6]": {
+                    "off": 0,
+                    "on": 128
+                },
+                "rgbButtons[7]": {
+                    "off": 0,
+                    "on": 128
+                },
+                "rgbButtons[8]": {
+                    "off": 0,
+                    "on": 128
+                },
+                "rgbButtons[9]": {
+                    "off": 0,
+                    "on": 128
+                },
+                "rgdwPOV[0]": {
+                    "off": -1,
+                    "on": 27000
+                },
+                "rglSlider[0]": {
+                    "off": 65535,
+                    "on": 0
+                }
+            },
+            "mapping": {
+                "L2": "rgbButtons[9]",
+                "L3": "rgbButtons[10]",
+                "PS": "rgbButtons[12]",
+                "R2": "rgbButtons[8]",
+                "R3": "rgbButtons[11]",
+                "SE": "rgbButtons[6]",
+                "ST": "rgbButtons[7]",
+                "arrow": "rgdwPOV[0]",
+                "brake": "lY",
+                "circle": "rgbButtons[4]",
+                "clutch": "rglSlider[0]",
+                "cross": "rgbButtons[5]",
+                "gas": "lRz",
+                "shifter_left": "rgbButtons[0]",
+                "shifter_right": "rgbButtons[1]",
+                "square": "rgbButtons[3]",
+                "steering": "lX",
+                "triangle": "rgbButtons[2]"
+            }
+        }
+    }
+}

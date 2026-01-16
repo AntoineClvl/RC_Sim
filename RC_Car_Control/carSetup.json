@@ -1,0 +1,15 @@
+{
+  "presets": {
+    "preset1": {
+      "engine_break_value": 1250,
+      "engine_power": 3000,
+      "brake_force": 15000
+    },
+    "preset2": {
+
+    }
+  }
+}
+
+
+

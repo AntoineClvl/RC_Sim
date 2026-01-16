@@ -1,0 +1,16 @@
+{
+  "presets": {
+    "road": {
+      "extremums": {
+        "steering_min": -65536,
+        "steering_max":  65535
+      }
+    },
+    "drift": {
+      "extremums": {
+        "steering_min": -65536,
+        "steering_max": 65535
+      }
+    }
+  }
+}
