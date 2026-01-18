@@ -13,9 +13,9 @@ constexpr float GEAR_RATIO_5 = 1.0f;
 
 constexpr int MOD_BRAKE_FORCE = 250;
 constexpr int MOD_ENGINE_POWER = 100;
-
-constexpr int STEERING_IN_MIN = 21000; // 32768 - x
-constexpr int STEERING_IN_MAX = 44536; // 32768 + x
+int x = 11536/2; // valeur de deadzone pour le volant 90° de chaque côté pour 11536/2
+int STEERING_IN_MIN = 32768 - x; // 32768 - x
+int STEERING_IN_MAX = 32768 + x; // 32768 + x
 constexpr int STEERING_OUT_MIN = 0;
 constexpr int STEERING_OUT_MAX = 65535;
 
@@ -362,8 +362,8 @@ void espDataManagement() {
     mapped_gas_value = mapFunc(State.gas_value, MAPPED_GAS_IN_MIN, MAPPED_GAS_IN_MAX, MAPPED_GAS_OUT_MIN, MAPPED_GAS_OUT_MAX); // voir librairie servo et mettre en microsecondes
     mapped_steering_value = mapFunc(State.steering_value, MAPPED_STEERING_IN_MIN, MAPPED_STEERING_IN_MAX, MAPPED_STEERING_OUT_MIN, MAPPED_STEERING_OUT_MAX);
 
-    ToSendData.throttle_value = mapped_gas_value;
-    ToSendData.steering_angle = mapped_steering_value;
+    ToSendData.throttle_value = (int32_t)mapped_gas_value;
+    ToSendData.steering_angle = (int32_t)mapped_steering_value;
     accel.store(mapped_gas_value);
     steer.store(mapped_steering_value);
     gear.store(State.gears);

@@ -44,11 +44,12 @@ struct settings {
     int brake_force = 15000;
     int max_engine_power_per_gear = 0;
 };
-
+#pragma pack(push, 1)
 struct toSendData {
-    int steering_angle = 98;
-    int throttle_value = 90;
+    int32_t steering_angle = 98;
+    int32_t throttle_value = 90;
 };
+#pragma pack(pop)
 
 extern state State;
 extern settings Settings;

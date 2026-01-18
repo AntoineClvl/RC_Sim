@@ -18,7 +18,7 @@ TODO :
     - ajouter d'autres paramètres de setup pour carSetup comme les ratios de gear (plus tard)
     - ajouter des fonctionnalités aux autres boutons du volant (ouverture de paramètres, etc) (plus tard)
 
-    - ajouter une calibration pour les valeurs limites des axes lors de calibrationWizard (et peut etre changer le nom de la fonction...)
+    - ajouter une calibration pour les valeurs limites des axes lors de calibrationWizard
 
     - ajouter un système d'attente de branchement du volant si aucun n'est connecté (quitte le programme actuellement)
 
@@ -37,10 +37,13 @@ int main() {
     HRESULT hr;
     DIJOYSTATE js;
 
-    //init
+    //init steering wheel
     HWND hWnd = GetConsoleWindow();
     if (!InitDirectInput(hWnd)) {
-        return 1;
+		std::cout << "Veuillez brancher le volant..." << std::endl;
+    }
+    while (!InitDirectInput(hWnd)) {
+        Sleep(500);
     }
 
     // Affiche tous les axes disponibles sur le périphérique
@@ -53,8 +56,7 @@ int main() {
     
 
 
-        //check com ports availables
-    
+    //check com ports availables
     std::vector<std::string> availableCOMPorts = getAvailableCOMPorts();
     bool port_available = false;
     if (availableCOMPorts.empty()) std::cout << "Aucun port COM disponible." << std::endl;
@@ -70,19 +72,11 @@ int main() {
     
     Sleep(1000);
 
-        // Acquisition
+    // Acquisition
     g_pDevice->Acquire();
     std::thread sendDataThread(sendData, port, baud_rate);
     Sleep(500);
     
-    
-    /*
-    UDPClientESP32 client("192.168.4.1", 3333);
-    if (!client.init()) {
-        std::cerr << "Failed to initialize UDP client\n";
-        return 1;
-    }
-    */
 
 
     initConfig();
@@ -99,7 +93,7 @@ int main() {
 
         //printData(hr, js); // debug
         dataParsing(hr, js);
-        //client.sendData(ToSendData); // en wifi
+  
         std::this_thread::sleep_for(std::chrono::milliseconds(5)); // 200 Hz
         //Sleep(5);
     }

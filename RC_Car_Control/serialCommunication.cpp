@@ -17,12 +17,29 @@
 std::atomic<uint8_t> accel(0);  
 std::atomic<uint8_t> steer(0);  
 std::atomic<int> gear(0);
-
-
-
 boost::system::error_code ec;
 
-void sendData(const std::string& port, unsigned int baud_rate, toSendData data) {
+#pragma pack(push, 1)
+typedef struct Packet{
+	uint8_t sof = 0xFF;  // start of frame
+	uint8_t len = 8; // length 
+	int32_t steering_angle;
+	int32_t throttle_value;
+	uint8_t eof = 0xFE;  // end of frame
+    uint8_t checksum;
+} Packet;
+#pragma pack(pop)
+
+void checksumCalc(Packet& P) {
+	uint8_t* ptr = (uint8_t*)&P;
+	uint8_t sum = 0;
+	for (size_t i = 0; i < sizeof(P) - 1; ++i) {
+		sum ^= ptr[i];
+	}
+	P.checksum = sum;
+}
+
+void sendData(const std::string& port, unsigned int baud_rate) {
     try {
         boost::asio::io_context io;
         boost::asio::serial_port serial(io, port);
@@ -34,10 +51,14 @@ void sendData(const std::string& port, unsigned int baud_rate, toSendData data) 
                 std::cerr << "Serial port is not open. Exiting thread..." << std::endl;
                 return;
             }
+            Packet P;
+			P.steering_angle = ToSendData.steering_angle;
+			P.throttle_value = ToSendData.throttle_value;
+			checksumCalc(P);
+			//std::cout << ToSendData.throttle_value << " " << ToSendData.steering_angle << std::endl;   
+            boost::asio::write(serial, boost::asio::buffer(&P, sizeof(Packet)));
 
-            boost::asio::write(serial, boost::asio::buffer(&data, sizeof(toSendData)));
-
-            std::this_thread::sleep_for(std::chrono::milliseconds(200));  // regler freq envoi
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));  // regler freq envoi
         }
     }
     catch (boost::system::system_error& e) {
